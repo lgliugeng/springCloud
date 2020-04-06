@@ -1,0 +1,52 @@
+spring:
+  profiles:
+    active: dev
+  cloud:
+    config:
+      fail-fast: false #快速响应失败，无法远程访问配置中心时立刻启动失败而无需等待加载其他内容
+      username: user
+      password: 123456
+    bus:
+      id: config-server:${spring.cloud.config.profile}:${random.value} #设置消息总线消息消息的命令规则，否则无法消费消息
+
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    sender:
+      type: rabbit
+  #zipkin:
+  #  base-url: http://127.0.0.1:9411  #zipkin-server服务(使用mq时不需要配置)
+zipkin:
+  rabbit:
+    queue: zipkin  # 指定mq队列名称
+
+logging:
+  level:
+    org.springframework.cloud.bus: debug
+
+---
+spring:
+  profiles: dev
+  application:
+    name: config-server
+  cloud:
+    config:
+      uri: http://localhost:7070
+      label: master
+      profile: dev
+---
+spring:
+  profiles: test
+  application:
+    name: config-server
+  cloud:
+    config:
+      uri: http://localhost:7070
+      label: master
+      profile: test

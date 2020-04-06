@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.liugeng</groupId>
+    <artifactId>springCloud</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>springCloud</name>
+    <description>Demo project for Spring Boot</description>
+
+    <!--基础依赖配置文件-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.4.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <modules>
+        <module>spring-boot-hello</module>
+        <module>spring-boot-eureka-server</module>
+        <module>spring-boot-ribbon-consumer</module>
+        <module>spring-boot-feign-consumer</module>
+        <module>spring-boot-hello-service-api</module>
+        <module>spring-boot-hystrix-server</module>
+        <module>spring-boot-hystrix-turbine-server</module>
+        <module>spring-boot-zuul-api-gateway</module>
+        <module>spring-boot-config-server</module>
+        <module>spring-boot-stream-hello</module>
+        <module>spring-boot-zipkin-server</module>
+    </modules>
+
+</project>
